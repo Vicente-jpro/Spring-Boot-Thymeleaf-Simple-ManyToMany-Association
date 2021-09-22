@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<title>Hello</title>
+</head>
+<body>
+	<h1 th:text="${message}"></h1>
+	
+	<form action="#" th:action ="@{/movie-actor}" th:object="${movieObject}"  method="POST">
+		<div th:object="${actorObject}">
+		<select th:field="*{idActor}">
+			<option value="0">Seleciona um actor</option>
+			<option th:each="actor: ${listActors}" th:text="${actor.nomeActor}" th:value="${actor.idActor}" th:with="name=${actor.idActor}"></option>
+		</select> 
+		</div>
+		<br><br>
+		<select th:field="*{idMovie}">
+			<option value="0">Seleciona um filme</option>
+			<option th:each="movie: ${listMovies}" th:text="${movie.title}" th:value="${movie.idMovie}" name="idMovie"></option>
+		</select>
+		<br> <br>
+		<button type="submit">Salvar</button>
+	
+	</form>
+</body>
+</html>
