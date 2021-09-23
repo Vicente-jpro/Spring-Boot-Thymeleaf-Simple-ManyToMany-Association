@@ -31,7 +31,7 @@ public class Movie {
 	@Size( max = 50)
 	private String title;
 	
-	@ManyToMany(cascade = CascadeType.MERGE)
+	@ManyToMany(cascade = {CascadeType.MERGE})
 	@JoinTable( name = "movie_actor", 
 	joinColumns={@JoinColumn( name = "movie_id")},
 	inverseJoinColumns = {@JoinColumn( name = "actor_id")})

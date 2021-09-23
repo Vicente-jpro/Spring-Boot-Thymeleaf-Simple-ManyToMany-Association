@@ -54,8 +54,8 @@ public class ActorController {
 	}
 	
 	@GetMapping("/delete-actor/{id}")
-	public String delete(@PathVariable("id") Long id, Model model) {
-		
+	public String delete(@PathVariable("id") Long id) {
+		this.actordb.delete( new Actor(id) );
 		return "redirect:/actors";
 	}
 	

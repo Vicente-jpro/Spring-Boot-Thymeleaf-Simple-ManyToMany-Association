@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Actor {
 	@Size(max = 50)
 	private String email;
 
-	@ManyToMany(mappedBy = "actors")
+	@ManyToMany(mappedBy = "actors", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Movie> movie = new ArrayList<Movie>();
 
 	public Actor() {
