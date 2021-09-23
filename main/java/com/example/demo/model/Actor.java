@@ -22,8 +22,10 @@ public class Actor {
 	private Long idActor;
 	
 	@Size( max = 50)
-	@Column(name="nome_actor")
-	private String nomeActor;
+	private String name;
+	
+	@Size(max = 50)
+	private String email;
 
 	@ManyToMany(mappedBy = "actors")
 	private List<Movie> movie = new ArrayList<Movie>();
@@ -36,14 +38,8 @@ public class Actor {
 		this.idActor = idActor;
 	}
 	
-	public Actor(Long idActor, String nomeAutor) {
-		super();
-		this.idActor = idActor;
-		this.nomeActor = nomeAutor;
-		
-	}
-	
 
+	
 	public List<Movie> getMovie() {
 		return movie;
 	}
@@ -58,19 +54,27 @@ public class Actor {
 		this.idActor = idActor;
 	}
 
-	public String getNomeActor() {
-		return nomeActor;
-	}
-
-	public void setNomeActor(String nomeActor) {
-		this.nomeActor = nomeActor;
-	}
+	
 
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	@Override
 	public String toString() {
-		return "Actor [idActor=" + idActor + ", nomeActor=" + nomeActor + "]";
+		return "Actor [idActor=" + idActor + ", name=" + name + ", email=" + email + ", movie=" + movie + "]";
 	}
+	
+	
 
 	
 

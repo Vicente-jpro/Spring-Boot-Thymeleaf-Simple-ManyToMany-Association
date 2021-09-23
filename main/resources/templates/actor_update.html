@@ -2,11 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-<title>Save</title>
+<title>Update</title>
 </head>
 <body>
-	<h1>New Actor</h1>
-	<form action="#" th:action="@{/new-actor}" th:object="${newActor}" method="POST">
+	<h1>Update Actor</h1>
+	
+	<button><a th:href="@{/actors}">View Actors</a></button>
+	
+	<form action="#" th:action="@{/new-actor}" th:object="${updateActor}" method="POST">
+		<input type="hidden" th:field="*{idActor}"/>
 		<input type="text" th:field="*{name}" placeholder="Actor name"/>
 		<input type="email" th:field="*{email}" placeholder="email@dominio.com"/>
 		<button type="submit">Save</button>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<title>View</title>
+</head>
+<body>
+	<h1>Actors List</h1>
+
+	<button> <a th:hreaf="@{/new-actor}">New Actor</a></button>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+		<tr th:each="actor: ${actorsList}">
+			<td th:text="${actor.idActor}"></td>
+			<td th:text="${actor.name}"></td>
+			<td th:text="${actor.email}"></td>
+			<td><button><a th:href="@{/update-actor/{id}(id=${actor.idActor})}">Update</a></button></td>
+			<td><button><a th:href="@{/delete-actor/{id}(id=${actor.idActor})}">Delete</a></button></td>
+		</tr>
+	</table>
+
+
+</body>
+</html>

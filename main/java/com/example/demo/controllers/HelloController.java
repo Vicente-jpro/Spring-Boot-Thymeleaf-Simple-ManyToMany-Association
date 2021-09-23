@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class HelloController {
 		modelMovie.addAttribute("listMovies", this.moviedb.readAll() );
 		modelMovieObject.addAttribute("movieObject", new Movie());
 		modelActorObject.addAttribute("actorObject", new Actor());
-		return "actor_save";
+		return "actor_movie_association_save";
 	}
 	
 	
