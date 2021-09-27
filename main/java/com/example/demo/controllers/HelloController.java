@@ -27,20 +27,7 @@ public class HelloController {
 	
 	@Autowired
 	private MovieActorServicedb movieActordb;
-	
-
-	@RequestMapping("/")
-	public String movieActorForm( Model modelActor, Model modelMovie, Model modelMovieObject, Model modelActorObject, Model modelMovieActor) {
 		
-		modelActor.addAttribute("listActors", this.actordb.readAll() );
-		modelMovie.addAttribute("listMovies", this.moviedb.readAll() );
-		modelMovieObject.addAttribute("movieObject", new Movie());
-		modelActorObject.addAttribute("actorObject", new Actor());
-		return "actor_movie_association_save";
-	}
-
-	
-	
 	@PostMapping("/movie-actor")
 	public String create(@ModelAttribute("movieObject") Movie mv, @ModelAttribute("actorObject") Actor at) {
 		
@@ -81,6 +68,7 @@ public class HelloController {
 		modelMovieObject.addAttribute("movieObject", new Movie());
 		
 		modelMovie.addAttribute("listMovies", this.moviedb.readAll() );
+		
 		
 		return "actor_movie_association_save";
 	}
