@@ -9,11 +9,14 @@
 	
 	<form action="#" th:action ="@{/movie-actor}" th:object="${movieObject}"  method="POST">
 		<div th:object="${actorObject}">
+		<input type="hidden" th:field="*{idActor}" />
+			<h2>Name: </h2><p th:text="*{name}" />
+			<h2>Email: </h2> <p th:text="*{email}" />
 		</div>
 		<br><br>
 		<select th:field="*{idMovie}">
 			<option value="0">Seleciona um filme</option>
-			<option th:each="movie: ${listMovies}" th:text="${movie.title}" th:value="${movie.idMovie}" name="idMovie"></option>
+			<option th:each="movie: ${listMovies}" th:text="${movie.title}" th:value="${movie.idMovie}"></option>
 		</select>
 		<br> <br>
 		<button type="submit">Salvar</button>

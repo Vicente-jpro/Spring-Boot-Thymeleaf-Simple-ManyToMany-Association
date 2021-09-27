@@ -13,11 +13,13 @@
 			<th>Id</th>
 			<th>Name</th>
 			<th>Email</th>
+			<th>Associate</th>
 		</tr>
 		<tr th:each="actor: ${actorsList}">
 			<td th:text="${actor.idActor}"></td>
 			<td th:text="${actor.name}"></td>
 			<td th:text="${actor.email}"></td>
+			<td><button><a th:href="@{//associate-actor-movie/{id}(id=${actor.idActor})}">Associate</a></button></td>
 			<td><button><a th:href="@{/update-actor/{id}(id=${actor.idActor})}">Update</a></button></td>
 			<td><button><a th:href="@{/delete-actor/{id}(id=${actor.idActor})}">Delete</a></button></td>
 		</tr>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.model.Actor;
@@ -59,6 +60,7 @@ public class HelloController {
 		this.moviedb.create(movie);
 	*/	
 	
+		return "redirect:/associate-actor-movie-view";
 		
 	}
 	
@@ -69,6 +71,20 @@ public class HelloController {
 		
 		return "movie_actor_view";
 	}
+	
+	@GetMapping("/associate-actor-movie/{id}")
+	public String saveMoveActos(@PathVariable("id") Long id , Model modelActor, Model modelMovie, Model modelMovieObject) {
+		
+		 
+		System.out.println("\n\n Entrou no controller \n\n");
+		modelActor.addAttribute("actorObject", this.actordb.getActor( new Actor(id) ));
+		modelMovieObject.addAttribute("movieObject", new Movie());
+		
+		modelMovie.addAttribute("listMovies", this.moviedb.readAll() );
+		
+		return "actor_movie_association_save";
+	}
+	
 	
 	@GetMapping("/associate-actor-movie-view")
 	public void viewMoveActos( Model modelActor, Model modelMovie, Model modelMovieObject) {
