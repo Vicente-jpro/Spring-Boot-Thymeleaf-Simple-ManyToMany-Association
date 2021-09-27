@@ -27,6 +27,24 @@ public class MovieActorServicedb {
 		.executeUpdate();
 		//+movie.getIdMovie()+
 	}
+<<<<<<< Updated upstream
+=======
+	
+	@Transactional
+	public List<Object[]> readAssociation() {
+		String sql = "SELECT actors.name, movies.title\n"
+				+ "	FROM movie_actor\n"
+				+ "	INNER JOIN movies\n"
+				+ "	ON movies.id_movie = movie_actor.movie_id\n"
+				+ "	INNER JOIN actors\n"
+				+ "	ON actors.id_actor = movie_actor.actor_id";
+		
+	List<Object[]> list = entityManager.createNativeQuery( sql )
+		.getResultList();
+	
+		return list;
+	}
+>>>>>>> Stashed changes
 
 	
 }

@@ -17,6 +17,7 @@ import com.example.demo.service.MovieServicedb;
 @Controller
 public class HelloController {
 
+
 	@Autowired
 	private ActorServicedb actordb;
 	
@@ -26,6 +27,7 @@ public class HelloController {
 	@Autowired
 	private MovieActorServicedb movieActordb;
 	
+
 	@RequestMapping("/")
 	public String movieActorForm( Model modelActor, Model modelMovie, Model modelMovieObject, Model modelActorObject, Model modelMovieActor) {
 		
@@ -35,6 +37,7 @@ public class HelloController {
 		modelActorObject.addAttribute("actorObject", new Actor());
 		return "actor_movie_association_save";
 	}
+
 	
 	
 	@PostMapping("/movie-actor")
@@ -56,7 +59,6 @@ public class HelloController {
 		this.moviedb.create(movie);
 	*/	
 	
-		return "redirect:/";
 		
 	}
 	
@@ -67,6 +69,20 @@ public class HelloController {
 		
 		return "movie_actor_view";
 	}
+	
+	@GetMapping("/associate-actor-movie-view")
+	public void viewMoveActos( Model modelActor, Model modelMovie, Model modelMovieObject) {
+		
+		for (Object[] object: this.movieActordb.readAssociation() ) {
+			
+			String actorName = (String) object[0];
+			String moveTitle = (String) object[1];
+			
+			System.out.println( " "+actorName+"  "+moveTitle);
+		} 
+		
+	}
+	
 	
 	
 }
