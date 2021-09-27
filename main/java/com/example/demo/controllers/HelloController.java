@@ -71,7 +71,7 @@ public class HelloController {
 		
 		return "movie_actor_view";
 	}
-	
+
 	@GetMapping("/associate-actor-movie/{id}")
 	public String saveMoveActos(@PathVariable("id") Long id , Model modelActor, Model modelMovie, Model modelMovieObject) {
 		
