@@ -51,13 +51,7 @@ public class HelloController {
 		
 	}
 	
-	@GetMapping("/movie-actor")
-	public String read(Model model) {
-		
-	//	model.addAttribute("movieActor", );
-		
-		return "movie_actor_view";
-	}
+	
 
 	@GetMapping("/associate-actor-movie/{id}")
 	public String saveMoveActos(@PathVariable("id") Long id , Model modelActor, Model modelMovie, Model modelMovieObject) {
@@ -75,8 +69,13 @@ public class HelloController {
 	
 	
 	@GetMapping("/associate-actor-movie-view")
-	public void viewMoveActos( Model modelActor, Model modelMovie, Model modelMovieObject) {
+	public String viewMoveActos( Model model) {
+	
+		model.addAttribute("listAssociators", this.movieActordb.readAssociation());
 		
+		/*	
+		 * Do not delete this display comment
+		 * 
 		for (Object[] object: this.movieActordb.readAssociation() ) {
 			
 			String actorName = (String) object[0];
@@ -84,7 +83,8 @@ public class HelloController {
 			
 			System.out.println( " "+actorName+"  "+moveTitle);
 		} 
-		
+		*/
+		return "actor_movie_association_view";
 	}
 	
 	

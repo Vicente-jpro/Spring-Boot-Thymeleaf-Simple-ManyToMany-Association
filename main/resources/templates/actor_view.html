@@ -2,29 +2,57 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-<title>View</title>
+   <meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ManyToMany, many to may association in spring boot">
+    <meta name="author" content="Vicente Rúben Xavier Simão">
+    <title>Actor List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-	<h1>Actors List</h1>
-
-	<button> <a th:hreaf="@{/new-actor}">New Actor</a></button>
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Associate</th>
-		</tr>
-		<tr th:each="actor: ${actorsList}">
-			<td th:text="${actor.idActor}"></td>
-			<td th:text="${actor.name}"></td>
-			<td th:text="${actor.email}"></td>
-			<td><button><a th:href="@{//associate-actor-movie/{id}(id=${actor.idActor})}">Associate</a></button></td>
-			<td><button><a th:href="@{/update-actor/{id}(id=${actor.idActor})}">Update</a></button></td>
-			<td><button><a th:href="@{/delete-actor/{id}(id=${actor.idActor})}">Delete</a></button></td>
-		</tr>
-	</table>
-
+	<header>
+		<ul class="nav justify-content-center">
+		  <li class="nav-item">
+		    <a class="nav-link" aria-current="page" th:href="@{/new-actor}">New Actor</a>
+		  </li>
+		   <li class="nav-item">
+		    <a class="nav-link active"  th:href="@{/actors}">View Actors</a>
+		  </li>
+		</ul>
+	</header>
+	<main class="container col-lg-7"  >
+		<h1>Actors List</h1>
+		<table class="table">
+			<thead class="thead-light">
+				<tr >
+					<th >Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Movie</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tr th:each="actor: ${actorsList}">
+				<td th:text="${actor.idActor}"></td>
+				<td th:text="${actor.name}"></td>
+				<td th:text="${actor.email}"></td>
+				<td><button class="btn btn-primary"><a class="text-white" th:href="@{/associate-actor-movie/{id}(id=${actor.idActor})}">Associate</a></button></td>
+				<td><button class="btn btn-success"><a class="text-white" th:href="@{/update-actor/{id}(id=${actor.idActor})}">Update</a></button></td>
+				<td><button class="btn btn-danger"><a class="text-white" th:href="@{/delete-actor/{id}(id=${actor.idActor})}">Delete</a></button></td>
+			</tr>
+			<tr >
+				<th >Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Movie</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</table>
+	</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+ 
 
 </body>
 </html>
